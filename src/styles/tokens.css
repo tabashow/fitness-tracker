@@ -1,0 +1,57 @@
+/* 色トークン。ダークモードは OS 設定に追従し、html[data-theme] で手動上書きできる */
+:root {
+  --bg: #f6f8f7;
+  --surface: #ffffff;
+  --surface-2: #eef2f0;
+  --text: #14201c;
+  --text-muted: #5b6b65;
+  --border: #dbe3df;
+  --accent: #0f766e;
+  --accent-soft: #ccebe6;
+  --on-accent: #ffffff;
+  --aerobic: #0f766e;
+  --strength: #b45309;
+  --success: #15803d;
+  --danger: #b91c1c;
+
+  --radius: 14px;
+  --nav-height: 64px;
+  --font: system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0b1210;
+    --surface: #131c19;
+    --surface-2: #1b2622;
+    --text: #e6eeea;
+    --text-muted: #93a49d;
+    --border: #26332e;
+    --accent: #2dd4bf;
+    --accent-soft: #123d37;
+    --on-accent: #04201c;
+    --aerobic: #2dd4bf;
+    --strength: #f59e0b;
+    --success: #4ade80;
+    --danger: #f87171;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b1210;
+  --surface: #131c19;
+  --surface-2: #1b2622;
+  --text: #e6eeea;
+  --text-muted: #93a49d;
+  --border: #26332e;
+  --accent: #2dd4bf;
+  --accent-soft: #123d37;
+  --on-accent: #04201c;
+  --aerobic: #2dd4bf;
+  --strength: #f59e0b;
+  --success: #4ade80;
+  --danger: #f87171;
+  color-scheme: dark;
+}
