@@ -1,0 +1,22 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fab {
+  position: fixed;
+  right: max(16px, calc(50vw - 280px + 16px));
+  bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 16px);
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 30px;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.25);
+  cursor: pointer;
+  z-index: 5;
+}

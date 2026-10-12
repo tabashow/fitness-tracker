@@ -27,7 +27,7 @@ React 19 + TypeScript + Vite / Dexie（IndexedDB）+ dexie-react-hooks / vite-pl
 - `src/db/` — Dexie スキーマとリポジトリ関数、バックアップ
 - `src/hooks/` — domain と db をつなぐ React フック（`useLiveQuery` で DB 変更を即時反映）
 - `src/features/<画面>/` — 画面ごとのコンポーネント（home / record / calendar / history / settings）
-- `src/components/` — 画面をまたいで使う UI（BottomNav, Toast, Sheet など）
+- `src/components/` — 画面をまたいで使う UI（BottomNav, Toast, Sheet, ConfirmButton, WorkoutList）。共通のフォーム部品・カードのスタイルは `ui.module.css`
 - `src/styles/tokens.css` — 色トークン
 
 ## ドメインルール（仕様として確定済み）
@@ -41,7 +41,9 @@ React 19 + TypeScript + Vite / Dexie（IndexedDB）+ dexie-react-hooks / vite-pl
 - **ストリーク** = 運動日数の目標を達成した週の連続数。今週は進行中なので、未達でも途切れ扱いにしない。全目標を達成した週は別途マークする（`allMet`）
 - **目標の変更**は `Settings.goalsHistory` に `effectiveFrom`（週の月曜）付きで追記し、過去の週の判定が変わらないようにする
 - **記録 1 件 = 活動 1 つ**。テンプレート（例：バイク 30 分 + 筋トレ 20 分）は 1 タップで複数レコードを作る
-- **リマインド**はアプリ内バナーのみ（iOS PWA で予約通知を出すにはプッシュサーバーが必要なため）。今日の記録がなく、設定時刻を過ぎていれば控えめに表示
+- **リマインド**はアプリ内バナーのみ（iOS PWA で予約通知を出すにはプッシュサーバーが必要なため）。今日の記録がなく、設定時刻を過ぎていれば控えめに表示。`reminderHour: 24` は「表示しない」
+- **バックアップの読み込み**：記録は ID ごとにマージ（`updatedAt` が新しい方を残す）、テンプレートと設定はバックアップで置き換える。1 件でも不正なデータがあればファイル全体を拒否する
+- **削除などの危険な操作**は 2 段階にする（記録の行は「×」→「削除」、それ以外は `ConfirmButton`）
 
 ## データとプライバシー（厳守）
 
@@ -68,11 +70,12 @@ React 19 + TypeScript + Vite / Dexie（IndexedDB）+ dexie-react-hooks / vite-pl
 ## 実装方針
 
 - 集計・判定ロジックは必ず `src/domain/` に純粋関数として置き、Vitest でテストする（月またぎ・年またぎ・週の境界・未達週を含める）。テスト用データは `src/domain/testUtils.ts` の `workout()` で作る
-- コンポーネントの中で集計しない。フックで domain 関数を呼ぶ
+- コンポーネントの中で集計しない。フック（`src/hooks/useData.ts`）で domain 関数を呼ぶ
+- 描画中に `new Date()` を呼ばない（oxlint の purity 警告になる）。現在時刻は `useNow()` / `useToday()` から取る
 - IndexedDB のスキーマを変えるときは Dexie の `version()` を上げ、既存データを壊さない。エクスポートする JSON にもスキーマバージョンを含める
 - ライブラリを追加する前に、既存の依存で足りないか検討する
 
 ## ロードマップ
 
-MVP（段階 0〜7）：ひな形 → domain + テスト → DB・記録シート・テンプレート → ホーム → カレンダー → 履歴の編集 → 設定・バックアップ → 実機確認。
+MVP（段階 0〜7）：ひな形 → domain + テスト → DB・記録シート・テンプレート → ホーム → カレンダー → 履歴の編集 → 設定・バックアップ → 実機確認。段階 0〜6 は実装済み。
 第 2 段階：血液検査値・体重の記録とグラフ（`measurements` ストアを追加）、運動量と検査値を並べて見る画面、Fitbit 連携（着手時に API の現状と認証方式を調べてから提案する）。

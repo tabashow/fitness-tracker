@@ -1,0 +1,19 @@
+.button {
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--danger);
+  border-radius: 10px;
+  background: none;
+  color: var(--danger);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.armed {
+  background: var(--danger);
+  color: var(--surface);
+}
+
+.button:disabled {
+  opacity: 0.5;
+}

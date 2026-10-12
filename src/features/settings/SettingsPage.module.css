@@ -1,0 +1,130 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.row select {
+  flex: 1;
+}
+
+.rowLabel {
+  width: 5.5em;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.label {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.number {
+  width: 88px;
+  text-align: right;
+}
+
+.unit {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.save {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.templates {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.template {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding-right: 6px;
+}
+
+.templateMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.templateMain span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.move {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background: var(--surface-2);
+  cursor: pointer;
+}
+
+.move:disabled {
+  opacity: 0.3;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.buttons > * {
+  flex: 1;
+}
+
+.importConfirm {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  font-size: 14px;
+}
+
+.importConfirm p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.danger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}

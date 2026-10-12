@@ -1,0 +1,165 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.nav {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--surface-2);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.monthTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monthTitle strong {
+  font-size: 17px;
+}
+
+.monthTitle span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr) 28px;
+  gap: 4px;
+  align-items: center;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.date {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.outside {
+  opacity: 0.35;
+}
+
+.active {
+  background: var(--accent-soft);
+}
+
+.active .date {
+  font-weight: 700;
+}
+
+.today .date {
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.selected {
+  border-color: var(--accent);
+}
+
+.dots {
+  display: flex;
+  gap: 3px;
+  height: 6px;
+}
+
+.dotAerobic,
+.dotStrength,
+.dotOther {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dotAerobic {
+  background: var(--aerobic);
+}
+
+.dotStrength {
+  background: var(--strength);
+}
+
+.dotOther {
+  background: var(--text-muted);
+}
+
+.weekMark {
+  text-align: center;
+  font-size: 16px;
+  color: var(--strength);
+}
+
+.check {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.partial {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 14px 0 0;
+  padding: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dayTitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}

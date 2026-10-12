@@ -5,8 +5,10 @@ import { HistoryPage } from './features/history/HistoryPage'
 import { HomePage } from './features/home/HomePage'
 import { SettingsPage } from './features/settings/SettingsPage'
 import styles from './App.module.css'
+import { useApplyTheme } from './hooks/useTheme'
 
 export default function App() {
+  useApplyTheme()
   return (
     <div className={styles.shell}>
       <main className={styles.main}>

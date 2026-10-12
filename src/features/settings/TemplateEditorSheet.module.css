@@ -1,0 +1,72 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nameField {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.nameField input {
+  flex: 1;
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itemRow select {
+  flex: 1;
+}
+
+.minutes {
+  width: 72px;
+}
+
+.removeItem {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--surface-2);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.removeItem:disabled {
+  opacity: 0.3;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions > :last-child {
+  flex: 1;
+}
